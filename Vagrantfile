@@ -77,6 +77,22 @@ Vagrant.configure("2") do |config|
     end
   end
 
+  config.vm.define "node3" do |node3|
+    node3.vm.hostname="node3.example.com"
+    node3.vm.provision :shell, :path => "setup.sh"
+    node3.vm.network :private_network,
+      :ip => "192.168.156.8",
+      :libvirt__netmask => "255.255.255.0",
+      :libvirt__network_name => "centos_cluster_net",
+      :libvirt__dhcp_enabled => false
+    node3.vm.synced_folder ".", "/vagrant", type: "nfs"
+    node3.vm.provider :libvirt do |libvirt|
+      libvirt.driver = "kvm"
+      libvirt.memory = 4096
+      libvirt.cpus = 2
+    end
+  end
+
   config.vm.define "master" do |master|
     master.vm.hostname="master.example.com"
     master.vm.provision :shell, :path => "setup.sh", :args => "master"
