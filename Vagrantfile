@@ -36,7 +36,6 @@ Vagrant.configure("2") do |config|
     inline: "sed -ri 's/127\.0\.0\.1\s.*/127.0.0.1 localhost localhost.localdomain/' /etc/hosts"
 
   config.vm.box = "centos/7"
-  config.vm.provision :shell, :path => "setup.sh", :args => PROJECTS.values.join(' ')
 
   config.vm.synced_folder ".", "/vagrant", type: "nfs"
 
