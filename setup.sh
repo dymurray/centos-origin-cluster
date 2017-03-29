@@ -27,7 +27,7 @@ ifup eth1
 if [ $1 == "master" ]; then
   yum -y install httpd-tools
   git clone https://www.github.com/ansible/ansible.git; cd ansible; python setup.py install; cd ..
-  git clone https://www.github.com/openshift/openshift-ansible.git; cd openshift-ansible
+  git clone https://www.github.com/dymurray/openshift-ansible.git; cd openshift-ansible
   cp /vagrant/hosts /etc/ansible/hosts
   ansible-playbook playbooks/byo/config.yml
   htpasswd -cb /etc/origin/master/htpasswd ansibleapp changeme

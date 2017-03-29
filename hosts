@@ -9,6 +9,7 @@ nodes
 [OSEv3:vars]
 ansible_ssh_user=root
 deployment_type=origin
+enable_excluders=false
 
 # Uncomment the following to enable htpasswd authentication; defaults to
 # DenyAllPasswordIdentityProvider.
